@@ -1,10 +1,8 @@
 2013_reu_paper
 ==============
-latex foo.tex 
 
-xdvi  foo.div (or yap on windows)
 
-or dvipdf foo.div to convert to pdf
+pdflatex foo.tex
 
 not so short primer http://ctan.mirrorcatalogs.com/info/lshort/english/lshort.pdf
 
