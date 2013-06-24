@@ -1,9 +1,28 @@
 %to compile, run "latex foo.tex"
 %then you can view the dvi file with "xdvi foo.div" or yap on windows (?)
 %or convert to pdf with "dvipdf foo.div" or "dvips -Pcmz foo.dvi -0 foo.ps" to postscript
-% nice website ctan.mirrorcatalogs.com/info/lshort/english/lshort.pdf 
+%Or, just run "pdflatex foo.tex"
 
 \documentclass{article}
 \begin{document}
-Small is beautiful.
+
+\subsection{Introduction}
+Small is beautiful\cite{albaker2009survey} . 
+
+
+
+\bibliographystyle{plain}
+\bibliography{mybib}
+
+%Bibliography time!!
+%\begin{thebibliography}{99}
+
+%\bibitem{unique}
+%	Author,
+%	\emph{some title}.
+%	Publisher, State, edition blah blah.	
+
+%\end{thebibliography}
+
+
 \end{document}
