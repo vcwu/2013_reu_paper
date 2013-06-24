@@ -106,12 +106,12 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+   \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
+   \graphicspath{{images/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
@@ -418,21 +418,13 @@ The abstract goes here.
 
 
 \section{Introduction}
-% no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.7 and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
-
-\hfill mds
- 
-\hfill January 11, 2007
 
 %\subsection{Motivation}
+Because of the inherently
 Here we put some stuff about UAVs. and such. 
 maybe some advantages/disadvantages to decentralized
+each sentence on its own line.
+An empty line = paragraph break.
 
 %\subsection{Problem Statement}
 We're using active sensing, assuming cooperative collision avoidance
@@ -443,6 +435,13 @@ In part 3, we'll be going over balh balh.
 Let's talk about existing solutions!
 
 \section{Literature Review}
+Hey look it's a picture! Figure \ref{fig:09Rahim} is cool.
+\begin{figure*}
+	\caption{A picture.}
+	%\centering
+	\label{fig:09Rahim}
+	\includegraphics [width=1\textwidth] {09Rahim_CasDesign}
+\end{figure*}
 
 \subsection{Conflict Detection}
 
