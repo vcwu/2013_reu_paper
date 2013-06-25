@@ -127,12 +127,12 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+   \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
+   \graphicspath{{images/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
@@ -352,7 +352,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Bare Demo of IEEEtran.cls for Conferences}
+\title{Title goes here}
 
 
 % author names and affiliations
@@ -367,13 +367,7 @@ Email: http://www.michaelshell.org/contact.html}
 \IEEEauthorblockN{Homer Simpson}
 \IEEEauthorblockA{Twentieth Century Fox\\
 Springfield, USA\\
-Email: homer@thesimpsons.com}
-\and
-\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
-\IEEEauthorblockA{Starfleet Academy\\
-San Francisco, California 96678-2391\\
-Telephone: (800) 555--1212\\
-Fax: (888) 555--1212}}
+Email: homer@thesimpsons.com}}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -423,7 +417,7 @@ The abstract goes here.
 
 % no keywords
 
-
+%rainbows are cool
 
 
 % For peer review papers, you can put extra information on the cover
@@ -439,23 +433,25 @@ The abstract goes here.
 
 
 \section{Introduction}
-% no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.7 and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
 
-\hfill mds
- 
-\hfill January 11, 2007
+%distributed/centralized
 
-\subsection{Subsection Heading Here}
+%Problem statement
+Some basic vocabulary are introduced to provide the context for our problem statement.
+The ideal goal for collision avoidance algorithms (?) is to successfully enable (planes) to see and avoid.
+ See and Avoid (S\&A), as defined in \cite{roadmap2002roadmap}, is the onboard, self-contained ability for a plane to 1. identify and detect a possible conflict and 2. maneuver itself to avoid the conflict. 
+//(some snazzy transition)
+
+
+%Overview
+In this paper, we first give a general overview of exisiting distributed collision avoidance algorithms. 
+We then introduce our implementation using a artificial potential field based approach. 
+
+\subsection{Literature Review}
 Subsection text here.
 
 
-\subsubsection{Subsubsection Heading Here}
+\subsubsection{Implementation}
 Subsubsection text here.
 
 
@@ -577,22 +573,13 @@ The authors would like to thank...
 % http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
 % The IEEEtran BibTeX style support page is at:
 % http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
+\bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
+\bibliography{mybib}
 %
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
-
-
 
 
 % that's all folks
