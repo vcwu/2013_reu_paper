@@ -4,11 +4,21 @@
 %Or, just run "pdflatex foo.tex"
 
 \documentclass{article}
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsExtensions{.pdf, .png, .jpg}
+\graphicspath { {images/} }
 \begin{document}
+
 
 \subsection{Introduction}
 Small is beautiful\cite{albaker2009survey} . 
 
+%for a two column figure
+\begin{figure*}
+	\caption{a picture.}
+	\label{fig:09Rahim}
+	\includegraphics [width=1\textwidth] {09RahimCasDesign}
+\end{figure*}
 
 
 \bibliographystyle{plain}
