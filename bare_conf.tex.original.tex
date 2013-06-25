@@ -78,6 +78,27 @@
 % (uncomment the ones you want to load)
 
 
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
 
 
 % *** CITATION PACKAGES ***
@@ -106,12 +127,12 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-   \usepackage[pdftex]{graphicx}
+  % \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
-   \graphicspath{{images/}}
+  % \graphicspath{{../pdf/}{../jpeg/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
@@ -418,45 +439,24 @@ The abstract goes here.
 
 
 \section{Introduction}
+% no \IEEEPARstart
+This demo file is intended to serve as a ``starter file''
+for IEEE conference papers produced under \LaTeX\ using
+IEEEtran.cls version 1.7 and later.
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+I wish you the best of success.
 
-%\subsection{Motivation}
-Because of the inherently
-Here we put some stuff about UAVs. and such. 
-maybe some advantages/disadvantages to decentralized
-each sentence on its own line.
-An empty line = paragraph break.
+\hfill mds
+ 
+\hfill January 11, 2007
 
-%\subsection{Problem Statement}
-We're using active sensing, assuming cooperative collision avoidance
-fixed speed
+\subsection{Subsection Heading Here}
+Subsection text here.
 
-In part 3, we'll be going over balh balh.
-%\subsubsection{Literature Review}
-Let's talk about existing solutions!
 
-\section{Literature Review}
-Hey look it's a picture! Figure \ref{fig:09Rahim} is cool.
-\begin{figure*}
-	\caption{A picture.}
-	%\centering
-	\label{fig:09Rahim}
-	\includegraphics [width=1\textwidth] {09Rahim_CasDesign}
-\end{figure*}
-
-\subsection{Conflict Detection}
-
-\subsection{Conflict Resolution}
-
-\subsubsection{Predefined or Rule Based}
-
-\subsubsection{Protocol based}
-
-\subsubsection{Optimized}
-
-\subsubsection{E field}
-
-\section{Implementation}
-We're using last year's APF implementation and making it distributed
+\subsubsection{Subsubsection Heading Here}
+Subsubsection text here.
 
 
 % An example of a floating figure using the graphicx package.
@@ -584,7 +584,7 @@ The authors would like to thank...
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{99}
+\begin{thebibliography}{1}
 
 \bibitem{IEEEhowto:kopka}
 H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
