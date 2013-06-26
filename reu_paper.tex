@@ -352,7 +352,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Title goes here}
+\title{Decentralized Collision Avoidance Framework for Unmanned Aerial Vehicles}
 
 
 % author names and affiliations
@@ -364,10 +364,11 @@ Georgia Institute of Technology\\
 Atlanta, Georgia 30332--0250\\
 Email: http://www.michaelshell.org/contact.html}
 \and
-\IEEEauthorblockN{Homer Simpson}
-\IEEEauthorblockA{Twentieth Century Fox\\
-Springfield, USA\\
-Email: homer@thesimpsons.com}}
+\IEEEauthorblockN{Victoria Wu}
+\IEEEauthorblockA{Computer Science Dept.\\
+University of Missouri - Kansas City\\
+Kansas City, Missouri\\
+Email: vcw7c5@mail.umkc.edu}}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -445,9 +446,10 @@ The primary disadvantage associated with decentralized collision avoidance algor
 
 something snazzy transition
 
-In this paper, we present a lightweight, distributed collision avoidance framework for use in UAVs. In section (), we first briefly define our problem statement, as well as the constraints imposed. In section(), we give a general overview of existing distributed collision avoidance algorithms that have similar constraints to our problem statement. 
+In this paper, we present a lightweight, distributed collision avoidance framework for use in UAVs. In section \ref{sec:problem}, we first briefly define our problem statement, as well as the constraints imposed. In section \ref{sec:litReview}, we give a general overview of existing distributed collision avoidance algorithms that have similar constraints to our problem statement. 
 
 \section{Problem Statement}
+\label{sec:problem}
 
 Our main intent is to ultimately develop a distributed, lightweight collision resolution framework  that is 1. ready for use with commercially available drones  and additional low cost hardware, and 2. able to modularly support various distributed collision resolution algorithms. 
 
@@ -461,7 +463,8 @@ In order to test this framework, we modify and decentralize an existing APF algo
 
 
 \section{Literature Review}
-A framework for categorizing collision avoidance systems is presented in the \cite{albaker2009survey} survey.  In this model, a collision avoidance system is conceptually broken down into different modules.  A collision avoidance algorithm can be designed by //considering// the conflict detection and escape trajectory selection, or conflict resolution, modules see figuredfd  In this framework, a collision is defined as an instance in which two or more UAVs violate a minimum separation distance between each other and a conflict occurs when two or more UAVs will enter a collision sometime in the future. In order to avoid collisions, it is necessary to first detect the corresponding conflict.  Therefore, conflict detection is a prerequisite of conflict resolution.
+\label{sec:litReview}
+A framework for categorizing collision avoidance systems is presented in \cite{albaker2009survey}.  In this model, a collision avoidance system is conceptually broken down into different modules.  A collision avoidance algorithm can be designed by //considering// the conflict detection and escape trajectory selection, or conflict resolution, modules //see figuredfd  In this framework, a collision is defined as an instance in which two or more UAVs violate a minimum separation distance between each other and a conflict occurs when two or more UAVs will enter a collision sometime in the future. In order to avoid collisions, it is necessary to first detect the corresponding conflict.  Therefore, conflict detection is a prerequisite of conflict resolution.
 
 \subsection{Conflict detection and awareness}
 
@@ -634,11 +637,6 @@ The conclusion goes here.
 
 % use section* for acknowledgement
 \section*{Acknowledgment}
-
-
-The authors would like to thank...
-
-
 
 
 
