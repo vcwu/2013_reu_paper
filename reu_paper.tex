@@ -358,11 +358,11 @@
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{\IEEEauthorblockN{Michael Shell}
-\IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
-Georgia Institute of Technology\\
-Atlanta, Georgia 30332--0250\\
-Email: http://www.michaelshell.org/contact.html}
+\author{\IEEEauthorblockN{Andrew Cunningham}
+\IEEEauthorblockA{Computer Science Dept\\
+Rensselaer Polytechnic Institute\\
+Troy, New York\\
+Email: cunnia3@rpi.edu}
 \and
 \IEEEauthorblockN{Victoria Wu}
 \IEEEauthorblockA{Computer Science Dept.\\
@@ -464,6 +464,13 @@ In order to test this framework, we modify and decentralize an existing APF algo
 
 \section{Literature Review}
 \label{sec:litReview}
+
+\begin{figure*}
+	\label{fig:09Rahim}
+	\includegraphics [width=1\textwidth] {09Rahim}
+	\caption{Illustrates the main CAS design factors divisions with its subdivisions \cite{albaker2009survey}}
+\end{figure*}
+
 A framework for categorizing collision avoidance systems is presented in \cite{albaker2009survey}.  In this model, a collision avoidance system is conceptually broken down into different modules.  A collision avoidance algorithm can be designed by //considering// the conflict detection and escape trajectory selection, or conflict resolution, modules //see figuredfd  In this framework, a collision is defined as an instance in which two or more UAVs violate a minimum separation distance between each other and a conflict occurs when two or more UAVs will enter a collision sometime in the future. In order to avoid collisions, it is necessary to first detect the corresponding conflict.  Therefore, conflict detection is a prerequisite of conflict resolution.
 
 \subsection{Conflict detection and awareness}
@@ -483,7 +490,13 @@ Flight plan sharing allows for a more direct detection of conflicts as it involv
 \subsubsection{Collision Cone}
 The collision cone is a pairwise conflict detection system in which a system of two moving agents is converted into a system with a single agent and a static obstacle \cite{danielscollision}.  Collision cones can be used to determine if a pair of agents are in conflict, assuming that the agents will continue on their current trajectories.
 
-A conflict is detected if the relative velocity vector (Vp1 - Vp2) lies within the collision cone. Mathematically, a conflict is detected when (equations yikes)
+A conflict is detected if the relative velocity vector lies within the collision cone. Mathematically, a conflict is detected when 
+
+\beta < \alpha
+\newline
+where
+\newline
+\beta = \angle v - \angle r
 
 
 An alternative representation of the collision cone for unicycle vehicles (non-holonomic vehicles with constant speed) is presented in figure (figure with collision cones using angles).  In this representation, a conflict is detected by examining the relative heading of two UAVs.
@@ -538,9 +551,25 @@ There are several issues that arise when APFs are used for collision avoidance o
 
 APFs are a popular research topic and have been utilized in many different ways to implement collision avoidance.   \cite{ruchti2011uav}, \cite{balch2000social} and \cite{barnes2006swarm} all make use of APFs to govern swarming behavior.  Swarming, in this context, refers to the grouping of UAVs in a geometric fashion in response to a specific situation. Specifically,  \cite{ruchti2011uav} made use of flocking behaviours to limit competition between UAVs that had similar destinations.  \cite{chang2003collision} presents gyroscopic forces as another extension to APFs for collision avoidance.  In \cite{chang2003collision}, repulsive forces are replaced with a gyroscopic force that activates whenever two agents come within a certain distance of each other.
 
+\begin{figure}
+	\includegraphics [width=1\columnwidth] {2003Chang}
+	\caption{Gyroscopic forces allow three agents to spin free of their initial configuration and reach their antipodal destinations \cite{chang2003collision}}
+	\label{fig:2003Chang}
+\end{figure}
+
+
 \subsubsection{Generalized Roundabout Policy}
+
 The generalized roundabout policy in collision avoidance refers to the idea of reserving a “disc” of space for each UAV.  This disc is defined by the UAV’s maximum turning radius so that the UAV can safely circle around in its disc at any time. \cite{pallottino2006probabilistic} discusses this approach in depth.
 
+\begin{figure*}
+	\label{fig:06Round}
+	\includegraphics [
+scale=0.25]{2006Pallotino}
+	
+	\caption{Illustrates the reserved disc concept for a single UAV
+}
+\end{figure*}
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
