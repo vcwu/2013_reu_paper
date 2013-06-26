@@ -442,10 +442,13 @@ The ideal goal for collision avoidance algorithms (?) is to successfully enable 
  See and Avoid (S\&A), as defined in \cite{roadmap2002roadmap}, is the onboard, self-contained ability for a plane to 1. identify and detect a possible conflict and 2. maneuver itself to avoid the conflict. 
 //(some snazzy transition)
 
+Certain constraints are imposed 
+assumes cooperative agents that actively share flight information - in our case, telemetry information consisting of speed, bearing, current and destination coordinates. 
+Non cooperative collision avoidance involving obstacles that do not actively share flight information are not considered in the scope of this problem.
 
 %Overview
-In this paper, we first give a general overview of exisiting distributed collision avoidance algorithms. 
-We then introduce our implementation using a artificial potential field based approach. 
+In this paper, we first give a general overview of exisiting distributed collision avoidance algorithms.
+We then introduce our implementation using a distributed artificial potential field based approach based on (fsquared)) 
 
 \section{Literature Review}
 Subsection text here.
