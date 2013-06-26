@@ -493,11 +493,14 @@ An alternative representation of the collision cone for unicycle vehicles (non-h
 
 \subsubsection{Predefined}
 In a predefined or rule based collision avoidance algorithm, certain rules define how a plane should maneuver given a specific situation.
-One such implementation is detailed in \cite{sislak2006negotiation}. Potential collisions are categorized according to the angle of the collision (reference figure); depending on the type of collision, each plane will execute a predefined escape maneuver. This decision is executed independently, with each plane detecting the collision from its point of view.  
+One such implementation is detailed in \cite{sislak2006negotiation}. Potential collisions are categorized according to the angle of the collision as seen in Figure \ref{fig:06SislakID}; depending on the type of collision, each plane will execute a predefined escape maneuver. This decision is executed independently, with each plane detecting the collision from its point of view.  
 
 This approach is relatively simple and easy to implement, taking up only as much processing power is needed to determine the type of collision. However, this approach is inherently static, and thus may not guarantee collision avoidance for special cases. In addition, because the maneuvers are arbitrarily predefined with no room for modifications, this approach may result in an inefficient escape maneuver when a more efficient one is available. 
-
-
+\begin{figure}[h]
+	\includegraphics [width=1\columnwidth] {06SislakCollisionId}
+	\caption{Categorizing collisions based on angle. \cite{sislak2006negotiation}}
+	\label{fig:06SislakID}
+\end{figure}
 \subsubsection{Protocol based}
 
 A negotiation based approach uses a predefined protocol to compromise and negotiate to achieve a mutually beneficial collision avoidance path. This approach assumes cooperative agents. The goal of such an approach is to find conflict-free flight paths for agents that are mutually beneficial.
@@ -506,14 +509,28 @@ One implementation of a protocol based collision avoidance algorithm is discusse
 
 Detection - Based on the flight plan data received from other agents, an agent can determine if a conflict is about to occur. Once a conflict is detected, the process of generating a negotiation set begins.
 
-Negotiation Set Generation
-Each agent generates a set of possible maneuvers it could take. In the implementation described in \cite{vsivslak2008agentfly}, the author suggests six possible alternate trajectories - left/right turn, climb/descend, and speed up/slow down. Each possible trajectory is then marked with a utility value representing the desirability of the trajectory to the agent. The utility of a trajectory is determined by a utility function, defined as the difference between the cost of the trajectory and the cost of a fallback trajectory. Figure (the figure thingy) lists a number of possible cost functions \cite{wollkind2004automated}. The cost function encodes the preferences of each agent, and is taken into account during negotiations. The agent marks each possible trajectory with its calculated utility value and sends them over to the other agent.  
+Negotiation Set Generation -
+Each agent generates a set of possible maneuvers it could take. In the implementation described in \cite{vsivslak2008agentfly}, the author suggests six possible alternate trajectories - left/right turn, climb/descend, and speed up/slow down. Each possible trajectory is then marked with a utility value representing the desirability of the trajectory to the agent. The utility of a trajectory is determined by a utility function, defined as the difference between the cost of the trajectory and the cost of a fallback trajectory. Figure \ref{fig:05Wollkind} lists a number of possible cost functions \cite{wollkind2004automated}. The cost function encodes the preferences of each agent, and is taken into account during negotiations. The agent marks each possible trajectory with its calculated utility value and sends them over to the other agent.  
+
+\begin{figure}[h]
+	\includegraphics [width=1\columnwidth] {05WollkindCost}
+	\caption{Cost functions for generating utility values. \cite{wollkind2004automated}}
+	\label{fig:05Wollkind}
+\end{figure}
+
 
 Once an agent receives a set of possible paths from a conflicting agent, it will pair them up with its own set to make a new set of all possible pairs of paths both agents could take.  The resulting set is the preliminary negotiation set, and is made of up of deals, or pairs of possible paths. All deals in the preliminary negotiation set are then validated, with those generating further conflicts removed; the remaining pairs of non conflict generating paths make up the negotiation set. 
 
 After generating the negotiation set, the next step is optimization. The “best” pair of paths must be found, taking into account the utility values associated with each deal. One possible way to find the best deal is to use the monotonic concession protocol (MCP), a incremental bargaining process described in  \cite{wollkind2004automated}  and \cite{zlotkin1989negotiation}. If no deal can be found, then a fallback deal must be executed. One option for the fallback deal is assuming the worst case scenario and finding a guaranteed safe trajectory no matter what the other agent does. 
 
-The number of agents involved in the negotiation affects how and when these four steps are executed. For pairs of conflicting agents, each agent can either execute all four steps independently (see that picture), or arbitrarily assign a master and slave to prevent repetition of work. For conflicts involving more than two agents, the same pair-wise algorithm can be applied iteratively, or the master slave approach can be expanded to replace the master with a coordinator responsible for finding collision free paths for a party of planes.
+The number of agents involved in the negotiation affects how and when these four steps are executed. For pairs of conflicting agents, each agent can either execute all four steps independently, or arbitrarily assign a master and slave to prevent repetition of work (see Figure \ref{fig:07SislakMaster}). For conflicts involving more than two agents, the same pair-wise algorithm can be applied iteratively, or the master slave approach can be expanded to replace the master with a coordinator responsible for finding collision free paths for a party of planes.
+
+\begin{figure}[h]
+	\includegraphics [width=1\columnwidth] {07SislakMasterSlave}
+	\caption{Protocol based negotiations. \cite{vsivslak2008agentfly}}
+	\label{fig:07SislakMaster}
+\end{figure}
+
 
 This approach’s main benefit is that it negotiates a mutually beneficial path, and the measure of the “benefit” can be fit to each agent. Each agent is able to inject its own preferences into the negotiating process. As a result, this approach can produce more efficient results and is more adaptable than a static, rule based method or a worst case method. However, the chattiness of the protocol requires more bandwidth for communications, and the algorithm itself requires more processing power depending on the number of agents involved. 
 
