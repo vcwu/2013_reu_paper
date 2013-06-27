@@ -359,7 +359,7 @@
 % use a multiple column layout for up to three different
 % affiliations
 \author{\IEEEauthorblockN{Andrew Cunningham}
-\IEEEauthorblockA{Computer Science Dept\\
+\IEEEauthorblockA{Computer Science Dept.\\
 Rensselaer Polytechnic Institute\\
 Troy, New York\\
 Email: cunnia3@rpi.edu}
@@ -503,13 +503,15 @@ Flight plan sharing allows for a more direct detection of conflicts as it involv
 
 The collision cone is a pairwise conflict detection system in which a system of two moving agents is converted into a system with a single agent and a static obstacle \cite{danielscollision}.  Collision cones can be used to determine if a pair of agents are in conflict, assuming that the agents will continue on their current trajectories.
 
-A conflict is detected if the relative velocity vector lies within the collision cone. Mathematically, a conflict occurs if \begin{math}\beta <  \alpha \end{math} where:
+A conflict is detected if the relative velocity vector lies within the collision cone. Mathematically, a minimum seperation distance, \begin{math}d_{sep} \end{math}, will be violated sometime in the future if \begin{math}\beta <  \alpha \end{math} where:
 \newline
- \centerline{\begin{math} \beta = \ \angle\overrightarrow{v}  - \angle\overrightarrow{r}, \end{math}}
+ \centerline{\begin{math} \beta = \ \angle\vec{v}  - \angle\vec{r}, \end{math}}
 \newline
-and
+\centerline{\begin{math}\alpha = \arcsin(\frac{d_{sep}}{||\vec{r}||})\end{ math}}
 \newline
-\centerline{\begin{math}\alpha = \arcsin(\frac{dsep}{||\overrightarrow{r}||)}\end{ math}}
+\centerline{\begin{math} \vec{r} \end{ math} = relative position vector}
+\newline
+\centerline{\begin{math} \vec{v} \end{ math} = relative velocity vector}
 
 
 
