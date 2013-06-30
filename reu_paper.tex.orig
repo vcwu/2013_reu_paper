@@ -359,7 +359,7 @@
 % use a multiple column layout for up to three different
 % affiliations
 \author{\IEEEauthorblockN{Andrew Cunningham}
-\IEEEauthorblockA{Computer Science Dept.\\
+\IEEEauthorblockA{Computer Science Dept\\
 Rensselaer Polytechnic Institute\\
 Troy, New York\\
 Email: cunnia3@rpi.edu}
@@ -437,15 +437,42 @@ the effectiveness of this framework is verified in simulation and tested using r
 \section{Introduction}
 
 %distributed/centralized
+<<<<<<< HEAD
 
 As Unmanned Aerial Vehicles (UAV) become more widely utilized in both civilian and military endeavours, the need for an effective collision avoidance resolution algorithm becomes more pressing. 
 Existing collision avoidance algorithms can be classified into two different types - centralized and decentralized.  
 In a centralized collision avoidance algorithm, a central control unit will handle all collision avoidance computations. 
-While centralized algorithms can find globally optimal solutions, they are often impractical because they require the presence of a ground station, which may limit the range that UAVs can travel. Decentralized algorithms provide an alternative in which all collision avoidance computations are run locally on each UAV.
+While centralized algorithms can find globally optimal solutions, they are often impractical because they require the presence of a ground station, which may limit the available range that UAVs can travel. Decentralized algorithms provide an alternative in which all collision avoidance computations are run locally on each UAV.
 
-The primary disadvantage associated with decentralized collision avoidance algorithms is that they usually produce suboptimal solutions.  This results from the fact that decentralized algorithms typically operate on incomplete information and only avoid collisions locally. However, this situation reflects reality because UAVs will rarely have perfect information about their environment and neighbors. Decentralized collision avoidance algorithms also offer several advantages. One key advantage that decentralized algorithms offer is that they are robust, so no single failure will disable the entire system. In addition, many decentralized algorithms are scalable due to the fact that the local interactions do not change much as more UAVs are added.
+The primary disadvantage associated with decentralized collision avoidance algorithms is that they typically produce suboptimal solutions.  This results from the fact that decentralized algorithms typically operate on incomplete information and only avoid collisions locally. However, this situation reflects reality because UAVs will rarely have perfect information about their environment and neighbors. Decentralized collision avoidance algorithms also offer several advantages. One key advantage that decentralized algorithms offer is that they are robust, so no single failure will disable the entire system. In addition, many decentralized algorithms are scalable due to the fact that the local interactions do not change much as more UAVs are added.
 
-Decentralized collision avoidance algorithms are well suited for the inherent mobility and range of UAVs, but require a computationally efficient algorithm and surrounding framework. In this paper, we present a lightweight, distributed collision avoidance framework for use in UAVs. In section \ref{sec:problem}, we first briefly define our problem statement, as well as the constraints imposed. In section \ref{sec:litReview}, we give a general overview of existing distributed collision avoidance algorithms that have similar constraints to our problem statement. 
+something snazzy transition
+
+In this paper, we present a lightweight, distributed collision avoidance framework for use in UAVs. In section \ref{sec:problem}, we first briefly define our problem statement, as well as the constraints imposed. In section \ref{sec:litReview}, we give a general overview of existing distributed collision avoidance algorithms that have similar constraints to our problem statement. 
+
+\section{Problem Statement}
+\label{sec:problem}
+
+Our main intent is to ultimately develop a distributed, lightweight collision resolution framework  that is 1. ready for use with commercially available drones  and additional low cost hardware, and 2. able to modularly support various distributed collision resolution algorithms. 
+
+Our framework operates in conjunction with an existing ground control station and simulator developed in \cite{holt2012comparison}. The ground control station is responsible for sending desired goal waypoints to simulated and real UAVs while receiving telemetry updates to track progress. The simulator is responsible for generating telemetry messages for simulated planes, and maintaining the state of all simulated planes. 
+
+Because our framework is meant to be implemented on hardware and not just in simulation, certain requirements are set to account for real world conditions. One of the main requirements is that the framework must be lightweight. The size of the drone used limits the weight of the payload, which in turn limits the type and power of processor that can be used. Because our aim is to implement a distributed framework, another limitation is that all processing for collision avoidance must be done locally. These two limitations combined require that any framework developed, as well as any algorithm used, must be as lightweight as possible to ensure effective real time performance.
+
+In order to simplify the problem, we assume cooperative agents, as defined in \cite{roadmap2002roadmap}. Cooperative agents share flight information either passively by broadcasting, or actively by responding to a query. Non cooperative agents, on the other hand, do not actively share flight information and are considered obstacles. We constrain our problem to detecting and resolving conflicts with solely cooperative agents; in our case, UAVs passively broadcast their telemetry information consisting of speed, bearing, current and destination coordinates to other UAVs. To further simplify our problem, certain constraints are placed on the UAV’s performance.  The UAVs are constrained to a fixed speed and altitude, limiting the UAV’s movement to turning right or left. 
+
+In order to test this framework, we modify and decentralize an existing APF algorithm implemented by an REU team from the previous year \cite{siudynamic}.
+
+=======
+
+As Unmanned Aerial Vehicles (UAV) become more widely utilized in both civilian and military endeavours, the need for an effective collision avoidance resolution algorithm becomes more pressing. 
+Existing collision avoidance algorithms can be classified into two different types - centralized and decentralized.  
+In a centralized collision avoidance algorithm, a central control unit will handle all collision avoidance computations. 
+While centralized algorithms can find globally optimal solutions, they are often impractical because they require the presence of a ground station, which may limit the available range that UAVs can travel. Decentralized algorithms provide an alternative in which all collision avoidance computations are run locally on each UAV.
+
+The primary disadvantage associated with decentralized collision avoidance algorithms is that they typically produce suboptimal solutions.  This results from the fact that decentralized algorithms typically operate on incomplete information and only avoid collisions locally. However, this situation reflects reality because UAVs will rarely have perfect information about their environment and neighbors. Decentralized collision avoidance algorithms also offer several advantages. One key advantage that decentralized algorithms offer is that they are robust, so no single failure will disable the entire system. In addition, many decentralized algorithms are scalable due to the fact that the local interactions do not change much as more UAVs are added.
+
+Decentralized collision avoidance algorithms are well suited for the inherent mobility and range of UAVs, but require an computationally efficient algorithm and surrounding framework. In this paper, we present a lightweight, distributed collision avoidance framework for use in UAVs. In section \ref{sec:problem}, we first briefly define our problem statement, as well as the constraints imposed. In section \ref{sec:litReview}, we give a general overview of existing distributed collision avoidance algorithms that have similar constraints to our problem statement. 
 
 \section{Problem Statement}
 \label{sec:problem}
@@ -460,6 +487,7 @@ In order to simplify the problem, we assume cooperative agents, as defined in \c
 
 In order to test this framework, we modify and decentralize an existing APF algorithm implemented by an REU team from the previous year \cite{siudynamic}.
 
+>>>>>>> f229bea7e8a3f603b8f2fc699249ca8af166f694
 
 \section{Literature Review}
 \label{sec:litReview}
@@ -483,11 +511,11 @@ A framework for categorizing collision avoidance systems is presented in \cite{a
 	\label{fig:09RahimProject}
 \end{figure}
 
-State projection refers to the method used to predict the future position of a UAV to detect conflicts. Figure \ref{fig:09RahimProject} provides a visual representation of each type of state projection and \cite{albaker2009survey} provides a description of each:
+State projection refers to the method used to predict the future position of a UAV to detect conflicts. some figure(4 projections figure) provides a visual representation of each type of state projection and \cite{albaker2009survey} provides a description of each.
 
 Nominal or straight projection traces the UAV’s current trajectory and does not account for changing flight plans.  A conflict is detected if a UAV will collide with another UAV given that they both continue on their current headings.  However, straight projection is not reliable in cases where flight plans change frequently or for long projection times due to the fact that changed headings render previous predictions incorrect.
 
-Worst-case projection traces all possible routes that a UAV could take and detects a conflict if any of these flight paths intersects with the flight path of another UAV.  Projection distance must be limited in this approach to prevent oversensitivity in conflict detection and to minimize computational time devoted to prediction.
+Worst-case projection traces all possible routes that a UAV could take and detects a conflict if any of these flight paths intersects with the flight path of another UAV.  Projection distance must be limited in this approach to prevent oversensitivity in conflict detection and to minimize computational time devoted to projection.
 
 Probabilistic projection is similar to worst-case projection in that it considers multiple variations on current trajectory, but it adds the additional layer of considering the likelihood that the specific variation will occur.  
 
@@ -497,21 +525,19 @@ Flight plan sharing allows for a more direct detection of conflicts as it involv
 
 \begin{figure}[h]
 	\includegraphics [width=1\columnwidth] {2008Kristi}
-	\caption{The collision cone. A conflict is detected when velocity vector \begin{math}\vec{v_{ij}}\end{math} lies between the dotted lines \cite{lalish2008decentralized}}
+	\caption{The collision cone. A conflict is detected when v lies between the dotted lines \cite{lalish2008decentralized}}
 	\label{fig:cone}
 \end{figure}
 
 The collision cone is a pairwise conflict detection system in which a system of two moving agents is converted into a system with a single agent and a static obstacle \cite{danielscollision}.  Collision cones can be used to determine if a pair of agents are in conflict, assuming that the agents will continue on their current trajectories.
 
-A conflict is detected if the relative velocity vector lies within the collision cone. Mathematically, a minimum seperation distance, \begin{math}d_{sep} \end{math}, will be violated sometime in the future if \begin{math}\beta <  \alpha \end{math} where:
+A conflict is detected if the relative velocity vector lies within the collision cone. Mathematically, a conflict occurs if \begin{math}\beta <  \alpha \end{math} where:
 \newline
- \centerline{\begin{math} \beta = \ \angle\vec{v}  - \angle\vec{r}, \end{math}}
+ \centerline{\begin{math} \beta = \ \angle\overrightarrow{v}  - \angle\overrightarrow{r}, \end{math}}
 \newline
-\centerline{\begin{math}\alpha = \arcsin(\frac{d_{sep}}{||\vec{r}||})\end{ math}}
+and
 \newline
-\centerline{\begin{math} \vec{r} \end{ math} = relative position vector}
-\newline
-\centerline{\begin{math} \vec{v} \end{ math} = relative velocity vector}
+\centerline{\begin{math}\alpha = \arcsin(\frac{dsep}{||\overrightarrow{r}||)}\end{ math}}
 
 
 
@@ -567,11 +593,11 @@ This approach’s main benefit is that it negotiates a mutually beneficial path,
 
 The optimization approach to selecting escape trajectories involves formulating the problem in terms of constraints and cost functions.  Typically, the constraints are coupled with kinematic models of the planes and the cost functions are derived from a variety of metrics.  An escape trajectory can then be found by minimizing the cost function subject to the aforementioned constraints utilizing any optimization technique. Commonly used optimization techniques for this purpose include genetic algorithms, expert systems and fuzzy control.
 
-Genetic algorithms search the solution space of possible paths using techniques inspired by evolution.  Genetic algorithms generally follow a set process, described as follows:  The first step in most genetic algorithms is to initialize a population, or a random set of initial solutions.  The algorithm then enters a loop in which it will iteratively mutate the most successful members of the population and continue to do so until a suitably fit solution is found \cite{siudynamic}.
+Genetic algorithms search the solution space of possible paths using techniques inspired by evolution.  Genetic algorithms generally follow a set process, described as follows.  The first step in most genetic algorithms is to initialize a population, or a random set of initial solutions.  The algorithm then enters a loop in which it will iteratively mutate the most successful members of the population and continue to do so until a suitably fit solution is found \cite{siudynamic}.
 
 Expert Systems make use of rule bases to decide how to categorize and resolve conflicts.  However, these systems require a large number of rules to recognize all type of conflicts and the resolutions to the types of conflict.  Once the rule base is established, its use of rules makes it relatively easy to understand. \cite{kuchar2000review}
 
-Fuzzy control systems are modelled on fuzzy logic and follow a certain process.  In the first step, fuzzy values are created from numeric or “crisp” input.  The fuzzification of crisp input entails assigning descriptive tags to inputs that meet certain requirements.  For example, an altitude of 500-1000 meters could be classified as “high”.  A fuzzy control system can then apply a fuzzy rule base to this input to create a fuzzy output.  Finally, this output can be defuzzified to produce a flight plan. cite{2012Fuzzy}
+Fuzzy control systems are modelled on fuzzy logic and follow a certain process.  In the first step, fuzzy values are created from numeric or “crisp” input.  The fuzzification of crisp input entails assigning descriptive tags to inputs that meet certain requirements.  For example, an altitude of 500-1000 meters could be classified as “high”.  A fuzzy control system can then apply a fuzzy rule base to this input to create a fuzzy output.  Finally, this output can be defuzzified to produce a flight plan. cite{2011fuzzyADDME}
 
 \subsubsection{E Field}
 
