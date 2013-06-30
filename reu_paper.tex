@@ -359,16 +359,31 @@
 % use a multiple column layout for up to three different
 % affiliations
 \author{\IEEEauthorblockN{Andrew Cunningham}
-\IEEEauthorblockA{Computer Science Dept.\\
+\IEEEauthorblockA{
 Rensselaer Polytechnic Institute\\
 Troy, New York\\
-Email: cunnia3@rpi.edu}
+cunnia3@rpi.edu}
 \and
 \IEEEauthorblockN{Victoria Wu}
-\IEEEauthorblockA{Computer Science Dept.\\
+\IEEEauthorblockA{
 University of Missouri - Kansas City\\
 Kansas City, Missouri\\
-Email: vcw7c5@mail.umkc.edu}}
+vcw7c5@mail.umkc.edu}
+\and
+\IEEEauthorblockN{Saad Biaz}
+\IEEEauthorblockA{
+Auburn University\\
+Auburn, Alabama\\
+biazsaa@auburn.edu}
+\and
+\IEEEauthorblockN{David Jones}
+\IEEEauthorblockA{
+Auburn University\\
+Auburn, Alabama\\
+dhj0001@auburn.edu
+}
+
+}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -438,7 +453,7 @@ the effectiveness of this framework is verified in simulation and tested using r
 
 %distributed/centralized
 
-As Unmanned Aerial Vehicles (UAV) become more widely utilized in both civilian and military endeavours, the need for an effective collision avoidance resolution algorithm becomes more pressing. 
+As Unmanned Aerial Vehicles (UAVs) become more widely utilized in both civilian and military endeavours, the need for an effective collision and avoidance resolution algorithm becomes more pressing. 
 Existing collision avoidance algorithms can be classified into two different types - centralized and decentralized.  
 In a centralized collision avoidance algorithm, a central control unit will handle all collision avoidance computations. 
 While centralized algorithms can find globally optimal solutions, they are often impractical because they require the presence of a ground station, which may limit the range that UAVs can travel. Decentralized algorithms provide an alternative in which all collision avoidance computations are run locally on each UAV.
@@ -456,9 +471,9 @@ Our framework operates in conjunction with an existing ground control station an
 
 Because our framework is meant to be implemented on hardware and not just in simulation, certain requirements are set to account for real world conditions. One of the main requirements is that the framework must be lightweight. The size of the drone used limits the weight of the payload, which in turn limits the type and power of processor that can be used. Because our aim is to implement a distributed framework, another limitation is that all processing for collision avoidance must be done locally. These two limitations combined require that any framework developed, as well as any algorithm used, must be as lightweight as possible to ensure effective real time performance.
 
-In order to simplify the problem, we assume cooperative agents, as defined in \cite{roadmap2002roadmap}. Cooperative agents share flight information either passively by broadcasting, or actively by responding to a query. Non cooperative agents, on the other hand, do not actively share flight information and are considered obstacles. We constrain our problem to detecting and resolving conflicts with solely cooperative agents; in our case, UAVs passively broadcast their telemetry information consisting of speed, bearing, current and destination coordinates to other UAVs. To further simplify our problem, certain constraints are placed on the UAV’s performance.  The UAVs are constrained to a fixed speed and altitude, limiting the UAV’s movement to turning right or left. 
+In order to simplify the problem, we assume cooperative agents, as defined in \cite{roadmap2002roadmap}. Cooperative agents share flight information either passively by broadcasting, or actively by responding to a query. Non cooperative agents, on the other hand, do not actively share flight information and are considered obstacles. We constrain our problem to detecting and resolving conflicts with solely cooperative agents; in our case, UAVs passively broadcast their telemetry information consisting of speed, bearing, current and destination coordinates to other UAVs. To further simplify our problem, certain constraints are placed on the UAVs' performance.  The UAVs are constrained to a fixed speed and altitude, limiting the UAVs' movement to turning right or left. 
 
-In order to test this framework, we modify and decentralize an existing APF algorithm implemented by an REU team from the previous year \cite{siudynamic}.
+In order to test this framework, we modify and decentralize an existing APF algorithm implemented in \cite{siudynamic}.
 
 
 \section{Literature Review}
@@ -470,7 +485,7 @@ In order to test this framework, we modify and decentralize an existing APF algo
 	\label{fig:09Rahim}
 \end{figure*}
 
-A framework for categorizing collision avoidance systems is presented in \cite{albaker2009survey}.  In this model, a collision avoidance system is conceptually broken down into different modules, see Figure \ref{fig:09Rahim} for an illustration.  A collision avoidance algorithm can be designed by including the conflict detection and escape trajectory selection, or conflict resolution, modules.  In this framework, a collision is defined as an instance in which two or more UAVs violate a minimum separation distance between each other and a conflict occurs when two or more UAVs will enter a collision sometime in the future. In order to avoid collisions, it is necessary to first detect the corresponding conflict.  Therefore, conflict detection is a prerequisite of conflict resolution.
+A framework for categorizing collision avoidance systems is presented in \cite{albaker2009survey}.  In this model, a collision avoidance system is conceptually broken down into different modules (Figure \ref{fig:09Rahim}).  A collision avoidance algorithm can be designed by including the conflict detection and escape trajectory selection, or conflict resolution, modules.  In this framework, a collision is defined as an instance in which two or more UAVs violate a minimum separation distance between each other, and a conflict occurs when two or more UAVs will enter a collision sometime in the future. In order to avoid collisions, it is necessary to first detect the corresponding conflict.  Therefore, conflict detection is a prerequisite of conflict resolution.
 
 \subsection{Conflict detection and awareness}
 
@@ -485,11 +500,11 @@ A framework for categorizing collision avoidance systems is presented in \cite{a
 
 State projection refers to the method used to predict the future position of a UAV to detect conflicts. Figure \ref{fig:09RahimProject} provides a visual representation of each type of state projection and \cite{albaker2009survey} provides a description of each:
 
-Nominal or straight projection traces the UAV’s current trajectory and does not account for changing flight plans.  A conflict is detected if a UAV will collide with another UAV given that they both continue on their current headings.  However, straight projection is not reliable in cases where flight plans change frequently or for long projection times due to the fact that changed headings render previous predictions incorrect.
+Nominal or straight projection traces the UAV's current trajectory and does not account for changing flight plans.  A conflict is detected if a UAV will collide with another UAV given that they both continue on their current headings.  However, straight projection is not reliable in cases where flight plans change frequently or for long projection times due to the fact that changed headings render previous predictions incorrect.
 
 Worst-case projection traces all possible routes that a UAV could take and detects a conflict if any of these flight paths intersects with the flight path of another UAV.  Projection distance must be limited in this approach to prevent oversensitivity in conflict detection and to minimize computational time devoted to prediction.
 
-Probabilistic projection is similar to worst-case projection in that it considers multiple variations on current trajectory, but it adds the additional layer of considering the likelihood that the specific variation will occur.  
+Probabilistic projection is similar to worst-case projection in that it considers multiple variations on the current trajectory, but it adds the additional layer of considering the likelihood that the specific variation will occur.  
 
 Flight plan sharing allows for a more direct detection of conflicts as it involves having multiple UAVs sharing portions of their planned trajectories with other nearby UAVs.  This method allows for accurate conflict detection, but presents the difficulty of actually transmitting these plans.  
 
@@ -551,7 +566,7 @@ Once an agent receives a set of possible paths from a conflicting agent, it will
 
 After generating the negotiation set, the next step is optimization. The “best” pair of paths must be found, taking into account the utility values associated with each deal. One possible way to find the best deal is to use the monotonic concession protocol (MCP), a incremental bargaining process described in  \cite{wollkind2004automated}  and \cite{zlotkin1989negotiation}. If no deal can be found, then a fallback deal must be executed. One option for the fallback deal is assuming the worst case scenario and finding a guaranteed safe trajectory no matter what the other agent does. 
 
-The number of agents involved in the negotiation affects how and when these four steps are executed. For pairs of conflicting agents, each agent can either execute all four steps independently, or arbitrarily assign a master and slave to prevent repetition of work (see Figure \ref{fig:07SislakMaster}). For conflicts involving more than two agents, the same pair-wise algorithm can be applied iteratively, or the master slave approach can be expanded to replace the master with a coordinator responsible for finding collision free paths for a party of planes.
+The number of agents involved in the negotiation affects how and when these four steps are executed. For pairs of conflicting agents, each agent can either execute all four steps independently, or arbitrarily assign a master and slave to prevent repetition of work (Figure \ref{fig:07SislakMaster}). For conflicts involving more than two agents, the same pair-wise algorithm can be applied iteratively, or the master slave approach can be expanded to replace the master with a coordinator responsible for finding collision free paths for a party of planes.
 
 \begin{figure}[h]
 	\includegraphics [width=1\columnwidth] {07SislakMasterSlave}
@@ -560,7 +575,7 @@ The number of agents involved in the negotiation affects how and when these four
 \end{figure}
 
 
-This approach’s main benefit is that it negotiates a mutually beneficial path, and the measure of the “benefit” can be fit to each agent. Each agent is able to inject its own preferences into the negotiating process. As a result, this approach can produce more efficient results and is more adaptable than a static, rule based method or a worst case method. However, the chattiness of the protocol requires more bandwidth for communications, and the algorithm itself requires more processing power depending on the number of agents involved. 
+This approach's main benefit is that it negotiates a mutually beneficial path, and the measure of the benefit can be set by each agent. Each agent is able to inject its own preferences into the negotiating process. As a result, this approach can produce more efficient results and is more adaptable than a static, rule based method or a worst case method. However, the chattiness of the protocol requires more bandwidth for communications, and the algorithm itself requires more processing power depending on the number of agents involved. 
 
 \subsubsection{Optimized}
 
@@ -585,7 +600,7 @@ Fuzzy control systems are modelled on fuzzy logic and follow a certain process. 
 
 The E-Field or APF (artificial potential field) approach to trajectory calculation involves modelling UAVs and their waypoints as charged particles.  UAVs are assigned the same charge so that they repel each other and waypoints are assigned an opposite charge so that their corresponding UAVs are attracted to them.  UAVs can then implicitly plan paths by summing attractive and repulsive forces to create the next desired heading.
 
-Several factors need to be considered when designing an APF system.  One consideration is the consideration of field shape.  While in reality, charged particles can affect other charged particles over any distance, there is little reason to implement such a field for UAVs in the context of collision avoidance.  If the APFs were to extend to a great distance, the contribution of force to the affected UAV would be negligible and would only use more computation time.  Therefore, it is often the case that limit functions are created to define a finite field shape around a UAV.  Another design consideration that should be taken into account is the field function.  Once a UAV enters another UAV’s APF, the field function determines the magnitude (and possibly direction) of the repulsive force \cite{khatib1985real}.
+Several factors need to be considered when designing an APF system.  One consideration is field shape.  While in reality, charged particles can affect other charged particles over any distance, there is little reason to implement such a field for UAVs in the context of collision avoidance.  If the APFs were to extend to a great distance, the contribution of force to the affected UAV would be negligible and would only use more computation time.  Therefore, it is often the case that limit functions are created to define a finite field shape around a UAV.  Another design consideration that should be taken into account is the field function.  Once a UAV enters another UAV's APF, the field function determines the magnitude (and possibly direction) of the repulsive force \cite{khatib1985real}.
 
 There are several issues that arise when APFs are used for collision avoidance on unicycle UAVs.  If only APFs are utilized, then there is no method for resolving a head on collision between two UAVs with waypoints located behind each other.  This results from the fact that there exists no force in this configuration that would cause the UAVs to turn away from each other.  Another issue is looping.  Looping occurs when a UAV circles its goal waypoint and is unable to reach it due to turning constraints.  In a pure APF approach, the attractive force of a waypoint can provide the “centripetal force” needed to initiate looping.  It is possible to resolve both of these issues by explicitly identifying the situation and then applying the appropriate maneuver(s) to resolve the issue \cite{ruchti2011uav}.
 
@@ -684,8 +699,8 @@ APFs are a popular research topic and have been utilized in many different ways 
 
 
 
-\section{Conclusion}
-The conclusion goes here.
+%\section{Conclusion}
+%The conclusion goes here.
 
 
 
@@ -694,7 +709,7 @@ The conclusion goes here.
 
 
 % use section* for acknowledgement
-\section*{Acknowledgment}
+%\section*{Acknowledgment}
 
 
 
