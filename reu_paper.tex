@@ -618,15 +618,7 @@ APFs are a popular research topic and have been utilized in many different ways 
 
 \subsection{APF Algorithm}
 
-A modified APF algorithm was chosen to implement decentralized collision avoidance.  In this setup, each UAV is subject to attractive and repulsive forces which lead the UAV to its desired waypoint while avoiding collisions. The attractive force was modeled to have a constant magnitude with a direction that is toward the plane’s goal waypoint. Repulsive forces, on the other hand, were calculated using a statically assigned field shape and field function on each plane. 
-
-Statically assigned field shapes and 
-
-
-
-
-
-functions enable each plane to calculate virtual forces using only the location and bearing of other planes.  The field shape was defined as an ovoid (INSERT\_FIGURE) and the field function was defined using bivariate normal functions (INSERT\_FIGURE), where the x and y coordinates would be relative to the plane generating the field.  A modular approach to APF assignment was taken, allowing users to define and make use of different field shapes and/or field functions. The correctness of the algorithm was then verified through simulation before it was ported to the hardware framework.
+A modified APF algorithm was chosen to implement decentralized collision avoidance.  In this setup, each UAV is subject to attractive and repulsive forces which lead the UAV to its desired waypoint while avoiding collisions. The attractive force was modeled to have a constant magnitude with a direction that is toward the plane’s goal waypoint. Repulsive forces, on the other hand, were calculated using a statically assigned field shape and field function on each plane. Statically assigned field shapes and functions enable each plane to calculate virtual forces using only the location and bearing of other planes.  The field shape was defined as an ovoid and the field function was defined using bivariate normal functions where these functions and parameters were developed and optimized by \cite{siudynamic}.  A modular approach to APF assignment was taken, allowing users to define and make use of different field shapes and/or field functions. The correctness of the algorithm was then verified through simulation before it was ported to the hardware framework.
 
 
 \subsection{Hardware}
