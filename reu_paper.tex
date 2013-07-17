@@ -645,7 +645,7 @@ While the ardu node is listening for a telemetry update from the ArduPilot, it w
 
 \subsubsection{Xbee}
 
-The xbee node is responsible for handling communication between the Raspberry Pi and the XBee module.  The XBee module communicates with other XBee modules by either receiving messages from a ground station and other UAVs or by sending out telemetry information to other systems.  Much like the ardu node, the xbee node simultaneously listens to the XBee module for a message and write to the XBee once a message is posted to the my\_mav\_telemetry topic.  
+The xbee node is responsible for handling communication between the Raspberry Pi and the XBee module.  The XBee module communicates with other XBee modules by either receiving messages from a ground station and other UAVs or by sending out telemetry information to other systems.  Much like the ardu node, the xbee node simultaneously listens to the XBee module for a message and writes to the XBee once a message is posted to the my\_mav\_telemetry topic.  
 
 The xbee node can currently read and decode two types of mavlink messages: a telemetry update and a command.  If a telemetry update is read from the XBee module, the message is decoded and posted to the all\_telemetry topic (which is used by the mover node). If a command is read from the XBee module, it is decoded and posted to the gcs\_commands topic (which is also used by the mover node).  
 
@@ -654,7 +654,7 @@ In addition to reading from the XBee module, the xbee node also waits for a mess
 
 \subsubsection{Mover}
 The mover node is responsible for generating waypoints to send to the ArduPilot. 
-This node operates by taking in telemetry messages and ground station control commands, then periodically forwarding waypoints to ca\_commands so that they can be sent to the ArduPilot.  Input to this node is taken from either the gcs\_commands topic or the all\_telemetry topic.  Messages from the gcs\_commands topic specify a goal waypoint that the UAV should eventually aim to reach while running collision avoidance.  Messages from the all\_telemetry topic, on the other hand, contain GPS updates from all other UAVs (including the plane running this framework). Depending on the state that the mover node is in (see section \ref{sec:statebased}), the forwarded waypoint will be either a collision avoidance waypoint or the goal waypoint. 
+This node operates by taking in telemetry messages and ground station control commands, then periodically forwarding waypoints to ca\_commands so that they can be sent to the ArduPilot.  Input to this node is taken from either the gcs\_commands topic or the all\_telemetry topic.  Messages from the gcs\_commands topic specify a goal waypoint that the UAV should eventually aim to reach while running collision avoidance.  Messages from the all\_telemetry topic, on the other hand, contain GPS updates from all UAVs (including the plane running this framework). Depending on the state that the mover node is in (see section \ref{sec:statebased}), the forwarded waypoint will be either a collision avoidance waypoint or the goal waypoint. 
 The waypoint is forwarded to the ardu node through the ca\_commands topic at a preset rate so that the ArduPilot is not flooded with commands.
 
 \subsubsection{Collision Avoidance}
